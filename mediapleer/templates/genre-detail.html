@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<div class="m-header-1"> {{ genre.name }} </div>
+	<div class='m-parag'> {{ genre.description }} </div>
+
+	{% if bands %}
+
+		<div class='m-parag'> Представители жанра: </div>
+
+		<ul>		
+			{% for band in bands %}
+				<li>
+				<a href="{{ band.get_absolute_url }}">{{ band.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+
+	{% endif %}
+		
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<div class="m-header-2">Список групп:</div>
+
+	{% if band_list %}
+		<ul>		
+			{% for band in band_list %}
+				<li>
+				<a href="{{ band.get_absolute_url }}">{{ band.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<div class="m-parag-1">Групп нет.</div>
+	{% endif %}      
+
+{% endblock %}

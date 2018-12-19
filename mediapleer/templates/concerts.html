@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<div class="m-header-2">Список концеров:</div>
+
+	{% if concert_list %}
+		<ul>		
+			{% for concert in concert_list %}
+				<li>
+				<a href="{{ concert.get_absolute_url }}">{{ concert.start }}  :  {{ concert.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<div class="m-parag-1">Групп нет.</div>
+	{% endif %}      
+
+{% endblock %}

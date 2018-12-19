@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<div class="m-header-1"> {{ concert.name }} </div>
+	<div class="m-header-2"> {{ concert.start }} </div>
+
+	{% if bands %}
+		<ul>
+			<p>Список участников:</p>
+			{% for band in bands %}
+				<li>
+					<a href="{{ band.get_absolute_url }}">{{ band.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>Альбомов нет.</p>
+	{% endif %}      
+
+{% endblock %}

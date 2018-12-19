@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<div class="m-header-1"> {{ c_user.username }} </div>
+	<div class="m-header-2"> {{ c_user.firstname }} </div>
+	<div class="m-header-2"> {{ c_user.lastname }} </div>		
+
+	{% if c_user.groups.all %}
+		<div class='m-parag'> Состоит в группах: </div>
+	
+		{% for group in c_user.groups.all %}
+			<div class="m-parag"> {{ group.name }} </div>
+		{% endfor %}
+	{% else %}
+
+	{% endif %}
+
+	<div class="m-header-2"> {{ profile.city.name }} </div>
+
+	{% if perms.mediapleer.control_user %}
+		<a href="{{ profile.get_absolute_url }}/change">Изменить права</a> 
+	{% endif %}  
+
+{% endblock %}

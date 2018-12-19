@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="m-header-1">База данных музыкальных групп и их творчества</div>
+
+  <div class="m-parag">Добро пожаловать на <b>AltGround!</b>, самый неполный музыкальный сервис, который можно встретить на просторах рунета</div>
+
+<div class="m-header-2">Насколько неполная?</div>
+
+  <div class="m-parag">Самая неполная, которую только можно представить!</div>
+  <div class="m-parag">В нашем каталоге нет ничего, кроме этих произведений:</div>
+  <ul>
+    <li><strong>Жанры:</strong> {{ num_genre }}</li>
+    <li><strong>Группы:</strong> {{ num_band }}</li>
+    <li><strong>Альбомы:</strong> {{ num_album }}</li>
+    <li><strong>Песни:</strong> {{ num_track }}</li>
+    <li><strong>Клипы:</strong> {{ num_video }}</li>
+    <li><strong>Концерты:</strong> {{ num_concert }}</li>
+  </ul>
+
+  {% if num_albums %}
+    <p>Концерты есть</p>
+  {% else %}
+    <p>Альбомов нет.</p>
+  {% endif %}     
+
+{% endblock %}

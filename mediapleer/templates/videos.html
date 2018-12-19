@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<div class="m-header-2">Список видеоработ:</div>
+
+	{% if video_list %}
+		<ul>		
+			{% for video in video_list %}
+				<li>
+				<a href="{{ video.get_absolute_url }}">{{ video.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<div class="m-parag-1">Групп нет.</div>
+	{% endif %}      
+
+{% endblock %}

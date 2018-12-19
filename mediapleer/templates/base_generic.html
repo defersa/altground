@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		{% block title %} <title>All about</title> {% endblock %}
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
+	<body>
+		<div id='b-header'>
+
+			<div id='b-header-text'> AltGround </div>
+			
+		</div> 
+
+
+		<div id='b-content'>
+
+			<div id='b-menu'>
+				{% block sidebar %}
+				<a href="{% url 'index' %}" class='b-menu-button'>Главная</a>
+				<a href="{% url 'genres' %}" class='b-menu-button'>Жанры</a>
+				<a href="{% url 'bands' %}" class='b-menu-button'>Группы</a>
+				<a href="{% url 'albums' %}" class='b-menu-button'>Альбомы</a>
+				<a href="{% url 'videos' %}" class='b-menu-button'>Клипы</a>
+				<a href="{% url 'concerts' %}" class='b-menu-button'>Концерты</a>
+
+					{% if perms.mediapleer.control_users %}
+						<a href="{% url 'users' %}" class='b-menu-button'>Пользователи</a>
+					{% endif %}
+
+				{% endblock %}
+			</div>
+
+			<div id='b-main'>
+				<div id='b-main-content'>
+					{% block content %}{% endblock %}
+				</div>
+			</div>
+
+			<div id='b-news'>
+				<div id='b-news-content'>
+					{% if user.is_authenticated %}
+						<li>Мы вновь рады тебя видеть,</li>
+						<li><a href="{% url 'profile'%}">{{ user.get_username }}</a></li>
+						<li><a href="{% url 'logout'%}?next=/">Выйти</a></li>   
+					{% else %}
+						<li>Мы не знакомы, путник?</li>
+						<li><a href="{% url 'login'%}?next=/">Войти</a></li>
+					{% endif %} 
+				</div>
+			</div>
+
+		</div> 
+	
+	</body>
+</html>

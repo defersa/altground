@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<div class="m-header-1"> {{ band.name }} </div>
+	<div class='m-parag'> {{ band.description }} </div>
+
+	{% if albums %}
+
+		<div class='m-parag'> Список альбомов </div>
+
+		<ul>		
+			{% for album in albums %}
+				<li>
+				<a href="{{ album.get_absolute_url }}">{{ album.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	{% if concerts %}
+
+		<div class='m-parag'> Список концертов </div>
+
+	
+	{% else %}
+
+	{% endif %}
+
+{% endblock %}

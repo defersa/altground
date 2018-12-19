@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<div class="m-header-1"> {{ band.name }} </div>
+
+	<div class="m-header-2"> {{ album.name }} </div>
+
+	<div class='m-parag'> {{ track.name }} </div>
+
+	
+	{% if user.is_authenticated %}
+		<audio controls="controls">
+			Ваш браузер не поддерживает <code>audio</code> элемент.
+			<source src="{{ track.url }}" type="audio/wav">
+		</audio>
+	{% else %}
+	    <div class='m-parag'> Прослушивание возможно только для зарагестрированных пользователей!</div>
+	{% endif %}
+			
+
+{% endblock %}
